@@ -1,0 +1,7 @@
+﻿  image.cpp
+D:\tinyrenderer\tinyRenderer\image.cpp(49,11): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+D:\tinyrenderer\tinyRenderer\image.cpp(88,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+D:\tinyrenderer\tinyRenderer\image.cpp(89,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+D:\tinyrenderer\tinyRenderer\image.cpp(90,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+D:\tinyrenderer\tinyRenderer\image.cpp(91,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+  tinyRenderer.vcxproj -> D:\tinyrenderer\Debug\tinyRenderer.exe
