@@ -57,15 +57,13 @@ namespace Renderer {
 			}
 		}
 
-		void ImageBase::triangle(int x1, int y1, int x2, int y2, int x3, int y3, int color, bool fill) {
-			if (!fill) {
-				line(x1, y1, x2, y2);
-				line(x2, y2, x3, y3);
-				line(x3, y3, x1, y1);
+		void ImageBase::triangle(int x1, int y1, int x2, int y2, int x3, int y3, int color, bool use_point) {
+			if (!use_point) {
+				line(x1, y1, x2, y2, color);
+				line(x2, y2, x3, y3, color);
+				line(x3, y3, x1, y1, color);
 			}
 			else {
-				// draw fill triangle here
-				// bubble sort by y
 				if (y1 > y2) {
 					std::swap(x1, x2);
 					std::swap(y1, y2);
@@ -79,23 +77,19 @@ namespace Renderer {
 					std::swap(y2, y3);
 				}
 
+				// y1 <= y2 <= y3
 				int max_height = y3 - y1;
-
-				for (int y = y1; y <= y2; y++) {
-					int segment_height = y2 - y1 + 1;
+				bool first_half = true;
+				for (int y = y1; y <= y3; y++) {
+					first_half = y <= y2;
+					int segment_height = first_half ? (y2 - y1 + 1) : (y3 - y2 + 1);
 					float alpha = (float)(y - y1) / max_height;
-					float beta = (float)(y - y1) / segment_height;
+					float beta = (float)(y - (first_half ? y1 : y2)) / segment_height;
 					int tx1 = x1 + (x3 - x1) * alpha;
-					int ty1 = y1 + (y3 - y1) * alpha;
-					int tx2 = x1 + (x2 - x1) * beta;
-					int ty2 = y1 + (y2 - y1) * beta;
-
-					std::cout << "1" << std::endl;
-
-					this->point(tx1, ty1);
-					this->point(tx2, ty2);
+					int tx2 = first_half ? (x1 + (x2 - x1) * beta) : (x2 + (x3 - x2) * beta);
+					this->point(tx1, y, color);
+					this->point(tx2, y, color);
 				}
-
 			}
 		}
 }

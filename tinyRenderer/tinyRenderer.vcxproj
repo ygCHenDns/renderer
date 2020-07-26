@@ -151,13 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="basicLogicStruct.cpp" />
     <ClCompile Include="image.cpp" />
+    <ClCompile Include="ObjParser.cpp" />
     <ClCompile Include="tinyRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="basicLogicStruct.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="geometry.h" />
     <ClInclude Include="image.h" />
+    <ClInclude Include="ObjParser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

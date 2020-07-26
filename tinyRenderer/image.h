@@ -27,7 +27,7 @@ namespace Renderer {
 		void point(int x, int y, int color = COLOR::White);
 		void point(float x, float y, int color = COLOR::White);
 		void line(int x1, int y1, int x2, int y2, int color = COLOR::White);
-		void triangle(int x1, int y1, int x2, int y2, int x3, int y3, int color = COLOR::White, bool fill = true);
+		void triangle(int x1, int y1, int x2, int y2, int x3, int y3, int color = COLOR::White, bool use_point = true);
 		//void triangle(Vec3f p1, Vec3f p2, Vec3f p3, int color = COLOR::White,  bool fill = true);
 	};
 }

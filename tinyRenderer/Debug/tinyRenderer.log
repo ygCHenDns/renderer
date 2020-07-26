@@ -1,7 +1,11 @@
-﻿  image.cpp
-D:\tinyrenderer\tinyRenderer\image.cpp(49,11): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-D:\tinyrenderer\tinyRenderer\image.cpp(88,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-D:\tinyrenderer\tinyRenderer\image.cpp(89,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-D:\tinyrenderer\tinyRenderer\image.cpp(90,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
-D:\tinyrenderer\tinyRenderer\image.cpp(91,14): warning C4244: “初始化”: 从“float”转换到“int”，可能丢失数据
+﻿  ObjParser.cpp
+  basicLogicStruct.cpp
+  tinyRenderer.cpp
+D:\tinyrenderer\tinyRenderer\geometry.h(290,22): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+D:\tinyrenderer\tinyRenderer\geometry.h(293,21): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+D:\tinyrenderer\tinyRenderer\camera.h(10,16): warning C4305: “初始化”: 从“double”到“float”截断
+D:\tinyrenderer\tinyRenderer\camera.h(26,15): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+D:\tinyrenderer\tinyRenderer\camera.h(27,18): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+D:\tinyrenderer\tinyRenderer\camera.h(28,19): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+  正在生成代码...
   tinyRenderer.vcxproj -> D:\tinyrenderer\Debug\tinyRenderer.exe

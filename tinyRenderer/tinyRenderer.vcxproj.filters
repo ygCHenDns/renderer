@@ -21,6 +21,12 @@
     <ClCompile Include="image.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="ObjParser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="basicLogicStruct.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="image.h">
@@ -30,6 +36,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjParser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="basicLogicStruct.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

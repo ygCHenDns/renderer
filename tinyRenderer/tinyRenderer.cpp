@@ -5,13 +5,25 @@
 #include "image.h"
 #include "geometry.h"
 #include "camera.h"
+#include "ObjParser.h"
+#include "basicLogicStruct.h"
 
 using namespace Renderer;
 
 int main()
 {
+	BasicLogicStruct::Array<std::string> str_array = BasicLogicStruct::splitStr("1 2 3 4 5", " ");
+
+	std::cout << str_array;
+
+
+
+	/*ObjFileObject obj = ObjFileObject();
+	char filePath[] = "D:\\tinyrenderer\\tinyRenderer\\simpleobj\\cube.obj";
+	obj.readFile(filePath);*/
+
 	// 右手坐标系
-	ImageBase imageBase = ImageBase();
+	/*ImageBase imageBase = ImageBase();
 	imageBase.Init();
 	
 	Vec3f v1(-100.0,100.0,-100.0), v2(100.0,100.0,-100.0), v3(100.0,100.0,100.0), v4(-100.0,100.0,100.0);
@@ -48,7 +60,7 @@ int main()
 
 	std::cout << v1 << v2 << v3 << v4 << v5<<v6<<v7<<v8<<std::endl;
 
-	imageBase.triangle(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, Renderer::COLOR::White);
+	imageBase.triangle(-50, 30, -50, 30, 45, 250, Renderer::COLOR::White);*/
 
 	/*imageBase.line(v1.x, v1.y, v2.x, v2.y, Renderer::COLOR::White);
 	imageBase.line(v2.x, v2.y, v3.x, v3.y, Renderer::COLOR::White);
