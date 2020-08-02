@@ -9,10 +9,11 @@ namespace Renderer {
 	class ObjFileObject {
 	private:
 		static const char* VERTEX_PREFIX;
+		static const char* FACE_PREFIX;
 		std::ifstream objFile;
-		BasicLogicStruct::Array<BasicLogicStruct::Array<float>> vertex;
-
 	public:
+		BasicLogicStruct::Array<BasicLogicStruct::Array<float>> vertex;
+		BasicLogicStruct::Array<BasicLogicStruct::Array<BasicLogicStruct::Array<int>>> face;
 		void readFile(char* filePath);
 		
 	};

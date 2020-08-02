@@ -1,5 +1,10 @@
 ﻿  ObjParser.cpp
   basicLogicStruct.cpp
+D:\tinyrenderer\tinyRenderer\basicLogicStruct.cpp(28,23): warning C4244: “参数”: 从“double”转换到“T”，可能丢失数据
+          with
+          [
+              T=float
+          ]
   tinyRenderer.cpp
 D:\tinyrenderer\tinyRenderer\geometry.h(290,22): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
 D:\tinyrenderer\tinyRenderer\geometry.h(293,21): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据

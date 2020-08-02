@@ -12,15 +12,14 @@ using namespace Renderer;
 
 int main()
 {
-	BasicLogicStruct::Array<std::string> str_array = BasicLogicStruct::splitStr("1 2 3 4 5", " ");
 
-	std::cout << str_array;
-
-
-
-	/*ObjFileObject obj = ObjFileObject();
+	ObjFileObject obj;
 	char filePath[] = "D:\\tinyrenderer\\tinyRenderer\\simpleobj\\cube.obj";
-	obj.readFile(filePath);*/
+	obj.readFile(filePath);
+	/*for (int i = 0; i < obj.face.get_size(); i++) {
+
+	}*/
+
 
 	// 右手坐标系
 	/*ImageBase imageBase = ImageBase();

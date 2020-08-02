@@ -3,6 +3,7 @@
 #define BASIC_LOGIC_STRUCT_H
 #include <iostream>
 #include <string>
+#include <assert.h>
 namespace BasicLogicStruct {
 	template <class T> class Array {
 	private:
@@ -12,6 +13,11 @@ namespace BasicLogicStruct {
 		T *data = new T[this->hold_size];
 	public:
 		Array() {};
+		Array(const BasicLogicStruct::Array<T>& array_t) {
+			for (int i = 0; i < array_t.size; i++) {
+				this->append(array_t.data[i]);
+			}
+		};
 		~Array() { 
 			delete[] this->data; 
 		};
@@ -56,6 +62,9 @@ namespace BasicLogicStruct {
 		T* get_data() {
 			return this->data;
 		};
+		int get_hold_size() {
+			return this->hold_size;
+		}
 		void set(size_t& n, T& set_data) {
 			if (n >= this->hold_size) {
 				this->resize(n);
@@ -65,8 +74,26 @@ namespace BasicLogicStruct {
 			}
 			this->data[n] = set_data;
 		}
+		void slice(size_t start_pos=0, size_t end_pos=-1) {
+
+			if (end_pos == -1) {
+				end_pos = this->size;
+			}
+
+			assert(start_pos <= end_pos);
+
+			int new_size = end_pos - start_pos;
+
+			int need_expand_muti = (new_size / basic_size) + 1;
+			this->hold_size = this->basic_size * need_expand_muti;
+			T* new_data = new T[this->hold_size];
+			for (int i = 0; i < this->size; i++) {
+				new_data[i] = this->data[start_pos + i];
+			}
+			delete[] this->data;
+			this->data = new_data;
+		}
 		friend std::ostream& operator<<(std::ostream&, Array<T>& array) {
-			std::cout << *array.get_data() << std::endl;
 			std::cout << "DATA:{";
 			for (int i = 0; i < array.size; i++) {
 				std::cout << array.data[i] << ", ";
@@ -75,8 +102,25 @@ namespace BasicLogicStruct {
 			std::cout << "SIZE:" << array.size << std::endl;
 			return std::cout;
 		};
+		Array<T>& operator =(BasicLogicStruct::Array<T>& array_t) {
+			return this->copy(array_t);
+		};
+		Array<T>& copy(BasicLogicStruct::Array<T>& array_t) {
+			this->hold_size = array_t.get_hold_size();
+			T* new_data = new T[this->hold_size];
+			delete[] this->data;
+			this->data = new_data;
+			for (int i = 0; i < array_t.get_size(); i++) {
+				this->append(array_t.get_data()[i]);
+			}
+			return *this;
+		}
+
 	};
-	Array<std::string> splitStr(const std::string oriStr, const std::string seperator);
+	void splitStr(const std::string oriStr, const std::string seperator, Array<std::string>&);
+	void convert_str_array(Array<int>& int_array, Array<std::string>& str_array);
+	void convert_str_array(Array<float>& int_array, Array<std::string>& str_array);
+
 }
 
 #endif
