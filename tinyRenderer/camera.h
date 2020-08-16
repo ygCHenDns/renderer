@@ -37,7 +37,6 @@ namespace Renderer {
 			//std::cout << u;
 			//摄像机垂直向上向量
 			Vec3f v = u ^ w;
-
 			Vec4x4f viewM(
 				new float[4][4]{
 					{u.x, u.y, u.z, 0},

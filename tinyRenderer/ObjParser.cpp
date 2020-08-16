@@ -13,7 +13,7 @@ namespace Renderer {
 		std::string temp = std::string(" ");
 		while (std::getline(objFile, output))
 		{
-			std::cout << output << std::endl;
+			//std::cout << output << std::endl;
 			if ((n = output.find(VERTEX_PREFIX)) == 0) {
 				BasicLogicStruct::Array<std::string> s;
 				BasicLogicStruct::splitStr(output, temp, s);
@@ -29,16 +29,16 @@ namespace Renderer {
 				BasicLogicStruct::Array<BasicLogicStruct::Array<int>> single_face;
 				for (int i = 0; i < s.get_size(); i++) {
 					BasicLogicStruct::Array<std::string> face_info_s;
-					std::cout << s << std::endl;
-					//s.get(i);
-					//BasicLogicStruct::splitStr(s.get(i), std::string("/"), face_info_s);
-					/*BasicLogicStruct::Array<int> face_info_i;
+					BasicLogicStruct::splitStr(s.get(i), std::string("/"), face_info_s);
+					BasicLogicStruct::Array<int> face_info_i;
 					BasicLogicStruct::convert_str_array(face_info_i, face_info_s);
-					single_face.append(face_info_i);*/
+					single_face.append(face_info_i);
 				}
 				this->face.append(single_face);
-				std::cout << face;
 			}
 		}
+		std::cout << this->vertex << std::endl;
+		std::cout << this->face << std::endl;
 	}
+
 }

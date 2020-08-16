@@ -29,16 +29,18 @@ namespace BasicLogicStruct {
 			this->size++;
 		};
 		T get(int n) {
-			return this[n];
+			return (*this)[n];
 		};
 		void auto_resize() {
 			this->do_resize(this->hold_size + this->basic_size);
+
 		};
 		void resize(int& new_size) {
 			int need_expand_muti = 1;
 			int sub_size;
 			if ((sub_size = (new_size - this->hold_size)) > 0) {
 				int need_expand_muti = (sub_size / basic_size) + 1;
+				std::cout << need_expand_muti << std::endl;
 			}
 			this->do_resize(this->hold_size + need_expand_muti * this->basic_size);
 		};
@@ -83,7 +85,7 @@ namespace BasicLogicStruct {
 			assert(start_pos <= end_pos);
 
 			int new_size = end_pos - start_pos;
-
+			this->size = new_size;
 			int need_expand_muti = (new_size / basic_size) + 1;
 			this->hold_size = this->basic_size * need_expand_muti;
 			T* new_data = new T[this->hold_size];
@@ -94,22 +96,28 @@ namespace BasicLogicStruct {
 			this->data = new_data;
 		}
 		friend std::ostream& operator<<(std::ostream&, Array<T>& array) {
-			std::cout << "DATA:{";
+			/*std::cout << "DATA:\n{";
 			for (int i = 0; i < array.size; i++) {
 				std::cout << array.data[i] << ", ";
 			}
 			std::cout << "}" << std::endl;
 			std::cout << "SIZE:" << array.size << std::endl;
+			return std::cout;*/
+			std::cout << "[";
+			for (int i = 0; i < array.size; i++) {
+				std::cout << "," + !i << array.data[i];
+			}
+			std::cout << "]";
 			return std::cout;
 		};
 		Array<T>& operator =(BasicLogicStruct::Array<T>& array_t) {
 			return this->copy(array_t);
 		};
 		Array<T>& copy(BasicLogicStruct::Array<T>& array_t) {
-			this->hold_size = array_t.get_hold_size();
+			/*this->hold_size = array_t.get_hold_size();
 			T* new_data = new T[this->hold_size];
 			delete[] this->data;
-			this->data = new_data;
+			this->data = new_data;*/
 			for (int i = 0; i < array_t.get_size(); i++) {
 				this->append(array_t.get_data()[i]);
 			}

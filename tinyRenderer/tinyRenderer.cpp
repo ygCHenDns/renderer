@@ -14,11 +14,36 @@ int main()
 {
 
 	ObjFileObject obj;
-	char filePath[] = "D:\\tinyrenderer\\tinyRenderer\\simpleobj\\cube.obj";
+	char filePath[] = "D:\\tinyrenderer\\tinyRenderer\\simpleobj\\trunk.obj";
 	obj.readFile(filePath);
-	/*for (int i = 0; i < obj.face.get_size(); i++) {
 
-	}*/
+	ImageBase image_base = ImageBase();
+	image_base.Init();
+	Vec3f cameraPosition(100.0, 100.0, 100.0), cameraFocus(0, 0, 0);
+	Camera camera(cameraPosition, cameraFocus);
+	camera.SetWidthAndHeight(800, 600);
+	Vec4x4f viewMatrix = camera.DumpViewMatrix();
+	Vec4x4f pm = camera.perspectiveMatrix(PI / 2.0f, 1.0f, 500.0f);
+	std::cout << viewMatrix << std::endl;
+	for (int i = 0; i < obj.face.get_size(); i++) {
+		int start_index = 0;
+		while (start_index <= obj.face[i].get_size() / 2) {
+			int vertex_index_1 = obj.face[i][start_index % obj.face[i].get_size()][0] - 1;
+			int vertex_index_2 = obj.face[i][(start_index + 1) % obj.face[i].get_size()][0] - 1;
+			int vertex_index_3 = obj.face[i][(start_index + 2) % obj.face[i].get_size()][0] - 1;
+			Vec3f v1(obj.vertex[vertex_index_1][0], obj.vertex[vertex_index_1][1], obj.vertex[vertex_index_1][2]);
+			Vec3f v2(obj.vertex[vertex_index_2][0], obj.vertex[vertex_index_2][1], obj.vertex[vertex_index_2][2]);
+			Vec3f v3(obj.vertex[vertex_index_3][0], obj.vertex[vertex_index_3][1], obj.vertex[vertex_index_3][2]);
+			std::cout << v1 << v2 << v3 << std::endl;
+			v1 = (v1.toPoint() * viewMatrix * pm).toVector3();
+			v2 = (v2.toPoint() * viewMatrix * pm).toVector3();
+			v3 = (v3.toPoint() * viewMatrix * pm).toVector3();
+			std::cout << v1 << v2 << v3 << std::endl;
+			image_base.triangle(v1.x, v1.y, v2.x, v2.y, v3.x, v3.y, COLOR::White, false);
+			start_index += 2;
+		}
+		
+	}
 
 
 	// 右手坐标系
